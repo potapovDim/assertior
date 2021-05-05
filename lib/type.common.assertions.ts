@@ -1,4 +1,4 @@
-import {deepEqual} from 'assert';
+import {deepStrictEqual} from 'assert';
 import {buildDefaultMessage} from './utils';
 import {postAssertCall} from './assertions.utils';
 import {typesEnum, expectedArg, isType, getType} from './types';
@@ -36,7 +36,7 @@ function toDeepEqual(expected, actual, message = '', _isSoft = false) {
   let resulter;
   message = message ? message : buildDefaultMessage('to deep equal', expected, actual);
   try {
-    deepEqual(expected, actual, message);
+    deepStrictEqual(expected, actual, message);
   } catch (error) {
     resulter = error;
   }
@@ -53,7 +53,7 @@ function toNotDeepEqual(expected, actual, message = '', _isSoft = false) {
     operator: 'toNotDeepEqual'
   });
   try {
-    deepEqual(expected, actual, message);
+    deepStrictEqual(expected, actual, message);
   } catch (error) {
     resulter = null;
   }
